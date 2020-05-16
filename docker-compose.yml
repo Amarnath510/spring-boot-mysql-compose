@@ -5,23 +5,25 @@ networks:
     name: spring_mysql_ntw
 
 services: 
-  api: 
+  companyApi: 
     image: amarnath510/spring-boot-mysql-app
     networks: 
       - proxy-ntw
-    container_name: company-api
+    container_name: companyApi  # Give same name as service name i.e, companyApi
     ports: 
       - 8200:8200
     depends_on: 
-      - db
+      - database
     restart: on-failure # Will fail first time since mysql is not up. So if it fails then it tries to restart app again
                         # More options https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy
 
-  db: 
+  database: 
     image: amarnath510/mysql-5.6-docker-image
     networks: 
       - proxy-ntw
-    container_name: database # This name is used in spring-boot application.yml for mysql url.
+    container_name: database  # Give same name as service name i.e, database. This 'database' is configured in MySQL url of spring boot app
+                              # Using same name as service will work without any issues when running using (Swarm + compose)
+                              # where each service is run seprately on different node
     ports: 
       - 3306:3306
     environment: 
