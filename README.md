@@ -30,6 +30,11 @@
       }
     ]
     ```
+
+    OR 
+    
+  - curl -i -X POST -H  'Content-Type: application/json' -d '[{ "firstName": "amarnath", "lastName": "chandana", "email": "amarnath@docker.com" }]' http://localhost:8200/company/employees/all
+    
   - **GET**: `http://localhost:8200/company/employees` to get above results
   - ### MySQL
   - `$ docker container exec -it database bash` (database is the name of the mysql container)
