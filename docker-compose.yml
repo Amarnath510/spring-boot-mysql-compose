@@ -8,7 +8,7 @@ services:
   api: 
     image: amarnath510/spring-boot-mysql-app
     networks: 
-      - proxy-ntw  # network name can be anything so we refer by proxy reference
+      - proxy-ntw
     container_name: company-api
     ports: 
       - 8200:8200
